@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #fafbfc;
+    color: #3a3d48;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.10);
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.18);
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/80 border border-black/[0.06] backdrop-blur-xl rounded-2xl;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+  }
+
+  .glass-card {
+    @apply bg-white/85 border border-black/[0.05] backdrop-blur-lg rounded-xl;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.7);
+  }
+
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white
+           bg-gradient-to-r from-accent-blue to-accent-purple
+           hover:from-accent-blue/90 hover:to-accent-purple/90
+           active:scale-[0.98]
+           transition-all duration-200
+           disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100;
+    box-shadow: 0 0 40px -10px rgba(68,102,242,0.25);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium text-ink-700
+           bg-surface-100 hover:bg-surface-200 border border-black/[0.06]
+           transition-all duration-200;
+  }
+
+  .btn-icon {
+    @apply inline-flex items-center justify-center w-9 h-9 rounded-lg text-ink-500
+           hover:bg-surface-100 hover:text-ink-700 border border-black/[0.04]
+           transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-ink-500
+           hover:bg-surface-100 hover:text-ink-700
+           transition-all duration-200 text-sm font-medium;
+  }
+
+  .btn-ghost.active {
+    @apply bg-surface-100 text-ink-900 border border-black/[0.06];
+  }
+
+  .input-base {
+    @apply w-full rounded-xl bg-surface-100 border border-black/[0.06] text-sm text-ink-700
+           placeholder:text-ink-400 focus:outline-none focus:border-accent-blue/40 focus:ring-1 focus:ring-accent-blue/20
+           transition-all;
+  }
+
+  .textarea-base {
+    @apply w-full rounded-xl bg-surface-100 border border-black/[0.06] text-sm text-ink-700
+           placeholder:text-ink-400 focus:outline-none focus:border-accent-blue/40 focus:ring-1 focus:ring-accent-blue/20
+           transition-all resize-none;
+  }
+}
+
+@layer utilities {
+  .shadow-soft {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03), 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .shadow-card {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .shadow-glow {
+    box-shadow: 0 0 40px -10px rgba(68,102,242,0.2);
+  }
+  .shadow-elevated {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04), 0 12px 36px rgba(0,0,0,0.08);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #4466f2 0%, #7c3aed 50%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-gradient {
+    position: relative;
+  }
+
+  .border-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(68,102,242,0.25), rgba(124,58,237,0.18), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
